@@ -73,7 +73,6 @@ const GlobalStyle = () => {
           box-sizing: border-box;
           -moz-osx-font-smoothing: grayscale;
           -webkit-font-smoothing: antialiased;
-          font-smoothing: antialiased;
         }
         *,
         html,
@@ -82,7 +81,18 @@ const GlobalStyle = () => {
           padding: 0;
           margin: 0;
           font-size: 62.5%;
-          Pretendard, -apple-system, BlinkMacSystemFont, system-ui, Roboto, 'Helvetica Neue', 'Segoe UI', 'Apple SD Gothic Neo', 'Noto Sans KR', 'Malgun Gothic', sans-serif;
+          font-family:
+            Pretendard,
+            -apple-system,
+            BlinkMacSystemFont,
+            system-ui,
+            Roboto,
+            'Helvetica Neue',
+            'Segoe UI',
+            'Apple SD Gothic Neo',
+            'Noto Sans KR',
+            'Malgun Gothic',
+            sans-serif;
         }
       `}
     />
