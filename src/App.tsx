@@ -18,7 +18,7 @@ const AppWrapper = styled.div`
 const AppContainer = styled.div`
   width: 100%;
   max-width: 480px;
-  height: 100%;
+  height: 100vh;
   margin: 0 auto;
   position: relative;
   border-left: solid 1px ${(props) => props.theme.colors.gray[200]};
