@@ -1,9 +1,12 @@
 import GlobalStyle from '@/styles/GlobalStyle';
 
-function App() {
+import Routes from '@/routes/index';
+
+function App(): JSX.Element {
   return (
     <>
       <GlobalStyle />
+      <Routes />
     </>
   );
 }
