@@ -1,11 +1,6 @@
+import { MapButtonTitle, MapButtonProps } from './MapButton.types';
 import { MapBtn, MapBtnTitle } from './MapButton.styles';
 import { IoMenu, IoMapOutline, IoRefreshOutline, IoReaderOutline } from 'react-icons/io5';
-
-type MapButtonTitle = '리스트뷰' | '지도뷰' | '현재 위치로 검색' | '리뷰 작성하기';
-
-interface MapButtonProps {
-  title: MapButtonTitle;
-}
 
 function MapButton({ title }: MapButtonProps) {
   const renderIcon = (title: MapButtonTitle) => {
