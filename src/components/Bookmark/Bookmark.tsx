@@ -1,7 +1,6 @@
 import { useState } from 'react';
 import { IoBookmarkOutline, IoBookmarkSharp } from 'react-icons/io5';
-import { buttonStyle, textStyle } from './Bookmark.style';
-import { css } from '@emotion/react';
+import { Button, IconContainer, Text } from './Bookmark.styles';
 
 function Bookmark() {
   const [isClicked, setIsClicked] = useState(false);
@@ -11,17 +10,12 @@ function Bookmark() {
   };
 
   return (
-    <button css={buttonStyle(isClicked)} onClick={handleClick}>
-      <div
-        css={css`
-          display: flex;
-          align-items: center;
-        `}
-      >
+    <Button isClicked={isClicked} onClick={handleClick}>
+      <IconContainer>
         {isClicked ? <IoBookmarkSharp size="24" color="#4F8337" /> : <IoBookmarkOutline size="24" color="#383838" />}
-        <span css={textStyle(isClicked)}>저장하기</span>
-      </div>
-    </button>
+        <Text isClicked={isClicked}>저장하기</Text>
+      </IconContainer>
+    </Button>
   );
 }
 
