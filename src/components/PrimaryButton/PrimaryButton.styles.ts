@@ -10,12 +10,12 @@ export const PrimaryBtn = styled.button`
   align-items: center;
   gap: 8px;
   border-radius: 4px;
-  background: ${(props) => (props.disabled ? props.theme.color.gray[300] : props.theme.color.green[500])};
+  background: ${(props) => (props.disabled ? props.theme.colors.gray[300] : props.theme.colors.green[500])};
   cursor: ${(props) => (props.disabled ? 'not-allowed' : 'pointer')};
 `;
 
 export const PrimaryBtnTitle = styled.p`
-  color: ${(props) => props.theme.color.white};
+  color: ${(props) => props.theme.colors.white};
   font-size: 16px;
   font-style: normal;
   font-weight: 600;
