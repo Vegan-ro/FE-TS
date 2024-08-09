@@ -14,15 +14,15 @@ export const SecondBtn = styled.button`
   background-color: ${(props) => {
     switch (props.color) {
       case 'green':
-        return props.theme.color.green[500];
+        return props.theme.colors.green[500];
       case 'gray':
-        return props.theme.color.gray[300];
+        return props.theme.colors.gray[300];
     }
   }};
 `;
 
 export const SecondBtnContent = styled.p`
-  color: ${(props) => props.theme.color.white};
+  color: ${(props) => props.theme.colors.white};
   font-size: 18px;
   font-style: normal;
   font-weight: 600;
