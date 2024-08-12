@@ -1,9 +1,11 @@
 import { Wrapper, Link, TextBox, TopText, BodyText, BottomText } from './Landing.styles';
 
+const GITHUB_URL = `https://github.com/Vegan-ro/FE-TS`;
+
 const Landing = () => {
   return (
     <Wrapper>
-      <Link href="https://github.com/Vegan-ro/FE-TS" target="_blank" />
+      <Link href={GITHUB_URL} target="_blank" />
       <TextBox>
         <TopText>
           한 발자국 더 <b>건강한 길로</b>

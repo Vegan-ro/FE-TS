@@ -5,10 +5,9 @@ const Main = () => {
     <div
       css={(theme) => css`
         background-color: ${theme.colors.gray[500]};
+        height: 100%;
       `}
-    >
-      Main
-    </div>
+    ></div>
   );
 };
 

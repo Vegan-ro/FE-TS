@@ -13,18 +13,13 @@ export const Wrapper = styled.div`
   width: calc(100% - 480px);
   min-width: 360px;
   height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
+  ${(props) => props.theme.flex.col('center', 'center')}
   gap: 36px;
 `;
 export const Link = styled.a`
   width: 220px;
   height: 296px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  ${(props) => props.theme.flex.row('center', 'center')}
   background-image: url('https://storage.googleapis.com/elice_04/vegan-ro-img/landing_sign.png');
   background-position: center;
   background-repeat: no-repeat;
@@ -36,8 +31,8 @@ export const Link = styled.a`
 export const TextBox = styled.div`
   display: flex;
   flex-direction: column;
-  gap: 16px;
   align-items: center;
+  gap: 16px;
 `;
 export const TopText = styled.p`
   font-size: 32px;
@@ -50,7 +45,7 @@ export const BodyText = styled.p`
   padding: 12px 18px;
   border-radius: 100px;
   background-color: white;
-  box-shadow: 4px 6px 16px 0px rgba(172, 203, 167, 0.1);
+  box-shadow: ${(props) => props.theme.boxShadow.light}
   color: ${(props) => props.theme.colors.green[500]};
   b {
     font-weight: 900;
