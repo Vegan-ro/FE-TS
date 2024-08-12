@@ -1,4 +1,40 @@
-import { Theme } from '@emotion/react';
+import { Theme, css, SerializedStyles } from '@emotion/react';
+
+type Sizes = {
+  desktop: number;
+  tablet: number;
+  mobile: number;
+};
+
+const sizes: Sizes = {
+  desktop: 1024,
+  tablet: 768,
+  mobile: 328,
+};
+
+type ViewPoint = {
+  desktop: (strings: TemplateStringsArray) => SerializedStyles;
+  tablet: (strings: TemplateStringsArray) => SerializedStyles;
+  mobile: (strings: TemplateStringsArray) => SerializedStyles;
+};
+
+const viewPoint: ViewPoint = {
+  desktop: (...args) => css`
+    @media (min-width: ${sizes.desktop}px) {
+      ${css(...args)};
+    }
+  `,
+  tablet: (...args) => css`
+    @media (min-width: ${sizes.tablet}px) {
+      ${css(...args)};
+    }
+  `,
+  mobile: (...args) => css`
+    @media (min-width: ${sizes.mobile}px) and (max-width: ${sizes.tablet - 1}px) {
+      ${css(...args)};
+    }
+  `,
+};
 
 const colors = {
   green: {
@@ -35,7 +71,12 @@ const colors = {
   white: '#FFFFFF',
 };
 
-const flex = {
+type FlexType = {
+  row: (just?: string, align?: string) => string;
+  col: (just?: string, align?: string) => string;
+};
+
+const flex: FlexType = {
   row: (just = 'center', align = 'center') => {
     return `display: flex;
     justify-content: ${just};
@@ -51,8 +92,10 @@ const flex = {
 
 export type ColorsTypes = typeof colors;
 export type FlexTypes = typeof flex;
+export type ViewPointTypes = typeof viewPoint;
 
-const theme: Theme = {
+const theme: Theme & { viewPoint: ViewPoint; flex: FlexType; colors: ColorsTypes } = {
+  viewPoint,
   colors,
   flex,
 };

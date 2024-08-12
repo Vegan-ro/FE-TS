@@ -1,8 +1,9 @@
 import '@emotion/react';
-import { ColorsTypes, FlexTypes } from '@/styles/Theme';
+import { ViewPointTypes, ColorsTypes, FlexTypes } from '@/styles/Theme';
 
 declare module '@emotion/react' {
   export interface Theme {
+    viewPoint: ViewPointTypes;
     colors: ColorsTypes;
     flex: FlexTypes;
   }
