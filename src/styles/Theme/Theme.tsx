@@ -1,10 +1,5 @@
-import { Theme, css, SerializedStyles } from '@emotion/react';
-
-type Sizes = {
-  desktop: number;
-  tablet: number;
-  mobile: number;
-};
+import { Theme, css } from '@emotion/react';
+import { Sizes, ViewPointType, ColorsType, BoxShadowType, FlexType } from './Theme.types';
 
 const sizes: Sizes = {
   desktop: 1024,
@@ -12,13 +7,7 @@ const sizes: Sizes = {
   mobile: 328,
 };
 
-type ViewPoint = {
-  desktop: (strings: TemplateStringsArray) => SerializedStyles;
-  tablet: (strings: TemplateStringsArray) => SerializedStyles;
-  mobile: (strings: TemplateStringsArray) => SerializedStyles;
-};
-
-const viewPoint: ViewPoint = {
+const viewPoint: ViewPointType = {
   desktop: (...args) => css`
     @media (min-width: ${sizes.desktop}px) {
       ${css(...args)};
@@ -36,7 +25,7 @@ const viewPoint: ViewPoint = {
   `,
 };
 
-const colors = {
+const colors: ColorsType = {
   green: {
     700: '#3D642A',
     500: '#4F8337',
@@ -71,9 +60,10 @@ const colors = {
   white: '#FFFFFF',
 };
 
-type FlexType = {
-  row: (just?: string, align?: string) => string;
-  col: (just?: string, align?: string) => string;
+const boxShadow: BoxShadowType = {
+  light: `4px 6px 16px 0px rgba(71, 71, 71, 0.1)`,
+  medium: `4px 6px 16px 0px rgba(71, 71, 71, 0.2)`,
+  dark: `4px 6px 16px 0px rgba(71, 71, 71, 0.3)`,
 };
 
 const flex: FlexType = {
@@ -90,13 +80,15 @@ const flex: FlexType = {
   },
 };
 
-export type ColorsTypes = typeof colors;
-export type FlexTypes = typeof flex;
 export type ViewPointTypes = typeof viewPoint;
+export type ColorsTypes = typeof colors;
+export type BoxShadowTypes = typeof boxShadow;
+export type FlexTypes = typeof flex;
 
-const theme: Theme & { viewPoint: ViewPoint; flex: FlexType; colors: ColorsTypes } = {
+const theme: Theme & { viewPoint: ViewPointTypes; colors: ColorsTypes; boxShadow: BoxShadowTypes; flex: FlexTypes } = {
   viewPoint,
   colors,
+  boxShadow,
   flex,
 };
 

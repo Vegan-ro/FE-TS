@@ -6,12 +6,12 @@ export const Button = styled.button`
   border-radius: 100%;
   border: solid 1px ${(props) => props.theme.colors.gray[300]};
   background: ${(props) => props.theme.colors.white};
-  box-shadow: 4px 6px 16px 0px rgba(71, 71, 71, 0.1);
+  box-shadow: ${(props) => props.theme.boxShadow.light}
   transition: all 0.3s ease-in;
   box-sizing: border-box;
   outline: none;
   ${(props) => props.theme.flex.row('center', 'center')}
   &:hover {
-    box-shadow: 4px 6px 16px 0px rgba(71, 71, 71, 0.3);
+    box-shadow: ${(props) => props.theme.boxShadow.dark}
   }
 `;
