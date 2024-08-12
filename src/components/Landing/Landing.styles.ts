@@ -45,7 +45,7 @@ export const BodyText = styled.p`
   padding: 12px 18px;
   border-radius: 100px;
   background-color: white;
-  box-shadow: ${(props) => props.theme.boxShadow.light}
+  box-shadow: ${(props) => props.theme.boxShadow.light};
   color: ${(props) => props.theme.colors.green[500]};
   b {
     font-weight: 900;
