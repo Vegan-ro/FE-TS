@@ -12,7 +12,7 @@ import { btnStyles } from './AdminPlaceModal.styles';
 import { AdminPlaceModalProps } from './AdminPlaceModal.types';
 import AdminPlaceDetail from '../AdminPlaceDetail/AdminPlaceDetail';
 
-export default function AdminPlaceModal({ placeDetail }: AdminPlaceModalProps) {
+function AdminPlaceModal({ placeDetail }: AdminPlaceModalProps) {
   const { isOpen, onOpen, onClose } = useDisclosure();
 
   const handleRegistration = async () => {
@@ -45,3 +45,5 @@ export default function AdminPlaceModal({ placeDetail }: AdminPlaceModalProps) {
     </>
   );
 }
+
+export default AdminPlaceModal;

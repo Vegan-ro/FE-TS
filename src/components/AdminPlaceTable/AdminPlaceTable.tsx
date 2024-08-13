@@ -3,7 +3,7 @@ import AdminPlaceModal from '../AdminPlaceModal/AdminPlaceModal';
 import { AdminPlaceTableProps } from './AdminPlaceTable.types';
 import { tbStyles, thStyles } from './AdminPlaceTable.styles';
 
-export default function AdminPlaceTable({ placeData }: AdminPlaceTableProps) {
+function AdminPlaceTable({ placeData }: AdminPlaceTableProps) {
   return (
     <TableContainer>
       <Table variant="simple">
@@ -33,3 +33,5 @@ export default function AdminPlaceTable({ placeData }: AdminPlaceTableProps) {
     </TableContainer>
   );
 }
+
+export default AdminPlaceTable;
