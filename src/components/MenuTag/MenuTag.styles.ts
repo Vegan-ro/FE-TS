@@ -18,10 +18,10 @@ export const MenuTagBtn = styled.button<MenuTagBtnProps>`
 export const MenuTagContent = styled.p<MenuTagBtnProps>`
   color: ${(props) => (props.$clicked ? props.theme.colors.green[500] : props.theme.colors.gray[600])};
   font-weight: 500;
-  ${(props) => props.theme.media.desktop`
+  ${(props) => props.theme.viewPoint.desktop`
     font-size: 16px;
   `}
-  ${(props) => props.theme.media.mobile`
+  ${(props) => props.theme.viewPoint.mobile`
     font-size: 14px;
   `}
 `;

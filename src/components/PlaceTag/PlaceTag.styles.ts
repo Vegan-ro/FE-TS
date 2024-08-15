@@ -21,10 +21,10 @@ export const PlaceTagContent = styled.p<PlaceTagBtnProps>`
   text-align: center;
   font-size: 16px;
   font-weight: 500;
-  ${(props) => props.theme.media.tablet`
+  ${(props) => props.theme.viewPoint.tablet`
     font-size: 16px;
   `}
-  ${(props) => props.theme.media.mobile`
+  ${(props) => props.theme.viewPoint.mobile`
     font-size: 14px;
   `}
 `;
