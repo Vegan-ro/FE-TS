@@ -7,7 +7,7 @@ export const NavContainer = styled.div`
   align-items: flex-start;
   justify-content: space-between;
   gap: 10px;
-  background: ${(props) => props.theme.color.white};
+  background: ${(props) => props.theme.colors.white};
   position: absolute;
   top: 0;
   left: 0;
@@ -16,12 +16,12 @@ export const NavContainer = styled.div`
   z-index: 999;
   svg {
     font-size: 24px;
-    color: ${(props) => props.theme.color.gray[800]};
+    color: ${(props) => props.theme.colors.gray[800]};
   }
 `;
 
 export const NavTitle = styled.p`
-  color: ${(props) => props.theme.color.gray[800]};
+  color: ${(props) => props.theme.colors.gray[800]};
   font-size: 18px;
   font-style: normal;
   font-weight: 600;
