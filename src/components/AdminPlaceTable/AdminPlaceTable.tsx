@@ -1,36 +1,40 @@
-import { Table, Thead, Tbody, Tr, Th, Td, TableContainer } from '@chakra-ui/react';
-import AdminPlaceModal from '../AdminPlaceModal/AdminPlaceModal';
+import { Td, Tr } from '@chakra-ui/react';
+import AdminTable from '../AdminTable/AdminTable';
 import { AdminPlaceTableProps } from './AdminPlaceTable.types';
-import { tbStyles, thStyles } from './AdminPlaceTable.styles';
+import AdminPlaceModal from '../AdminPlaceModal/AdminPlaceModal';
+import { IoTrashOutline } from 'react-icons/io5';
+import { ButtonWrapper, IconWrapper, tdStyles } from './AdminPlaceTable.styles';
 
 function AdminPlaceTable({ placeData }: AdminPlaceTableProps) {
+  const headers = ['가게 이름', '가게 형태', '채식 메뉴'];
+
+  const handleDelete = async () => {
+    // try {
+    //   await deletePlace(place._id);
+    // } catch (error) {
+    //   console.error(error);
+    // }
+  };
+
   return (
-    <TableContainer>
-      <Table variant="simple">
-        <Thead>
-          <Tr>
-            <Th></Th>
-            <Th sx={thStyles}>제보자</Th>
-            <Th sx={thStyles}>가게 이름</Th>
-            <Th sx={thStyles}>카테고리</Th>
-            <Th></Th>
-          </Tr>
-        </Thead>
-        <Tbody>
-          {placeData.map((place, index: number) => (
-            <Tr key={index}>
-              <Td>{index + 1}</Td>
-              <Th sx={tbStyles}>{place.user_id}</Th>
-              <Th sx={tbStyles}>{place.name}</Th>
-              <Th sx={tbStyles}>{place.category}</Th>
-              <Th>
-                <AdminPlaceModal placeDetail={place} />
-              </Th>
-            </Tr>
-          ))}
-        </Tbody>
-      </Table>
-    </TableContainer>
+    <AdminTable headers={headers}>
+      {placeData.map((place, index: number) => (
+        <Tr key={index} sx={tdStyles}>
+          <Td>{index + 1}</Td>
+          <Td>{place.name}</Td>
+          <Td>{place.category}</Td>
+          <Td>{place.vegan_option ? '일부 비건' : '전체 비건'}</Td>
+          <Td>
+            <ButtonWrapper>
+              <AdminPlaceModal placeDetail={place} tab={place.user_id ? 'add' : 'place'} />
+              <IconWrapper onClick={handleDelete}>
+                <IoTrashOutline size="15" />
+              </IconWrapper>
+            </ButtonWrapper>
+          </Td>
+        </Tr>
+      ))}
+    </AdminTable>
   );
 }
 
