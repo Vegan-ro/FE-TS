@@ -2,6 +2,23 @@
  * Route Path
  */
 
+export type PathKeys =
+  | 'ROOT'
+  | 'AUTH'
+  | 'SIGNUP'
+  | 'SEARCH'
+  | 'REVIEW'
+  | 'ADDPLACE'
+  | 'PLACELISTS'
+  | 'PLACEDETAIL'
+  | 'MY'
+  | 'MYEDIT'
+  | 'NOTFOUND';
+
+export type RoutePaths = {
+  [key in PathKeys]: (typeof PATH)[key];
+};
+
 export const PATH = Object.freeze({
   ROOT: '/' as const,
   AUTH: '/auth' as const,
