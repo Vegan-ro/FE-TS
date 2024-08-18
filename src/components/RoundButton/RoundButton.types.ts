@@ -1,4 +1,4 @@
 export interface RoundButtonProps {
-  title: 'gps' | 'menu' | 'main' | 'my' | 'addplace' | 'logout' | 'close';
+  title: 'gps' | 'menu' | 'root' | 'my' | 'addplace' | 'logout' | 'close';
   onClick: () => void;
 }
