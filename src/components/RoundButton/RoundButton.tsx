@@ -23,7 +23,7 @@ function RoundButton({ title, onClick }: RoundButtonProps) {
         return <IoLocate style={iconStyle} />;
       case 'menu':
         return <IoGridOutline style={iconStyle} />;
-      case 'main':
+      case 'root':
         return <IoHomeOutline style={iconStyle} />;
       case 'my':
         return <IoPersonOutline style={iconStyle} />;
