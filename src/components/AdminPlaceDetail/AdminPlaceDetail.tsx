@@ -9,7 +9,7 @@ import {
 import { HoursContainer, HourText, IconWrapper, InfoItem, InfoText, InfoWrapper } from './AdminPlaceDetail.styles';
 import { AdminPlaceDetailProps } from './AdminPlaceDetail.types';
 
-export default function AdminPlaceDetail({ placeDetail }: AdminPlaceDetailProps) {
+function AdminPlaceDetail({ placeDetail }: AdminPlaceDetailProps) {
   return (
     <InfoWrapper>
       <InfoItem>
@@ -58,3 +58,5 @@ export default function AdminPlaceDetail({ placeDetail }: AdminPlaceDetailProps)
     </InfoWrapper>
   );
 }
+
+export default AdminPlaceDetail;
