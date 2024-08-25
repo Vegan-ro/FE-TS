@@ -1,7 +1,7 @@
 export interface DateTagProps {
   title: string;
   onClick: () => void;
-  isClicked: number;
+  isClicked: boolean;
 }
 
 export interface DateTagBtnProps {
