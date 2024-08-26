@@ -29,8 +29,9 @@ export const Search = styled.input`
   font-weight: 500;
   letter-spacing: 0.2px;
   border-radius: 4px;
+  padding: 16px 40px 16px 16px;
   border: 1px solid ${(props) => props.theme.colors.gray[300]};
-  box-shadow: ${(props) => props.theme.boxShadow.light}
+  box-shadow: ${(props) => props.theme.boxShadow.light};
   transition: all 0.2s ease-in;
   box-sizing: border-box;
   outline: none;
@@ -39,7 +40,7 @@ export const Search = styled.input`
   }
   &:hover {
     border: 1px solid ${(props) => props.theme.colors.green[500]};
-    box-shadow: ${(props) => props.theme.boxShadow.medium}
+    box-shadow: ${(props) => props.theme.boxShadow.medium};
   &:focus ~ div {
     color: ${(props) => props.theme.colors.gray[800]};
   }
