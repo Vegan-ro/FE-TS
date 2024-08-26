@@ -15,5 +15,5 @@ export interface PlaceData {
   // location: number[];
   open_times: string[];
   sns_url: string[];
-  user_id: string;
+  user_id?: string;
 }

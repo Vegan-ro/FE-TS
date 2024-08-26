@@ -3,7 +3,7 @@ import AdminTable from '../AdminTable/AdminTable';
 import { AdminPlaceTableProps } from './AdminPlaceTable.types';
 import AdminPlaceModal from '../AdminPlaceModal/AdminPlaceModal';
 import { IoTrashOutline } from 'react-icons/io5';
-import { ButtonWrapper, IconWrapper, tdStyles } from './AdminPlaceTable.styles';
+import { ButtonWrapper, DataContent, IconWrapper, NoData, NoDataText, tdStyles } from './AdminPlaceTable.styles';
 
 function AdminPlaceTable({ placeData }: AdminPlaceTableProps) {
   const headers = ['가게 이름', '가게 형태', '채식 메뉴'];
@@ -16,7 +16,13 @@ function AdminPlaceTable({ placeData }: AdminPlaceTableProps) {
     // }
   };
 
-  return (
+  return placeData.length === 0 ? (
+    <DataContent>
+      <NoData>
+        <NoDataText>제보받은 장소가 없습니다.</NoDataText>
+      </NoData>
+    </DataContent>
+  ) : (
     <AdminTable headers={headers}>
       {placeData.map((place, index: number) => (
         <Tr key={index} sx={tdStyles}>
