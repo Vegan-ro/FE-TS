@@ -13,7 +13,8 @@ export type PathKeys =
   | 'PLACEDETAIL'
   | 'MY'
   | 'MYEDIT'
-  | 'NOTFOUND';
+  | 'NOTFOUND'
+  | 'ADMIN';
 
 export type RoutePaths = {
   [key in PathKeys]: (typeof PATH)[key];
@@ -31,4 +32,5 @@ export const PATH = Object.freeze({
   MY: `/user/:userid` as const,
   MYEDIT: '/user/:userid/edit' as const,
   NOTFOUND: '*' as const,
+  ADMIN: '/admin' as const,
 });
