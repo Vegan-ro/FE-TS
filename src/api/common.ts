@@ -1,6 +1,6 @@
 import axios, { InternalAxiosRequestConfig, AxiosError } from 'axios';
 
-const api = axios.create({
+const apiFetch = axios.create({
   baseURL: import.meta.env.VITE_APP_API_URL as string,
   headers: {
     'Content-Type': 'application/json',
@@ -8,7 +8,7 @@ const api = axios.create({
   withCredentials: false,
 });
 
-api.interceptors.request.use(
+apiFetch.interceptors.request.use(
   (config: InternalAxiosRequestConfig) => {
     const token = localStorage.getItem('Authorization');
     if (token && config.headers) {
@@ -21,4 +21,4 @@ api.interceptors.request.use(
   },
 );
 
-export default api;
+export default apiFetch;
