@@ -1,5 +1,5 @@
 import { useState, useEffect, useCallback } from 'react';
-import { Status, UseAxiosReturn } from './useAxios.d';
+import { Status, UseAxiosReturn } from './useAxios.types';
 
 const useAxios = <T>(
   callback: () => Promise<T>,
