@@ -1,9 +1,13 @@
-import { useEffect, useState, useCallback } from 'react';
-import { UseAxiosStatus } from './useAxios.types';
+import { useState, useEffect, useCallback } from 'react';
+import { Status, UseAxiosReturn } from './useAxios.types';
 
-const useAxios = <T>(callback: () => Promise<T>, deps: ReadonlyArray<unknown>[] = [], skip: boolean = false) => {
+const useAxios = <T>(
+  callback: () => Promise<T>,
+  deps: React.DependencyList = [],
+  ignore: boolean = false,
+): UseAxiosReturn<T> => {
   const [responseData, setResponseData] = useState<T | null>(null);
-  const [status, setStatus] = useState<UseAxiosStatus>('Idle');
+  const [status, setStatus] = useState<Status>('Idle');
 
   const axiosData = useCallback(async () => {
     setStatus('Loading');
@@ -19,9 +23,9 @@ const useAxios = <T>(callback: () => Promise<T>, deps: ReadonlyArray<unknown>[] 
   }, deps);
 
   useEffect(() => {
-    if (skip) return;
+    if (ignore) return;
     axiosData();
-  }, [axiosData, skip]);
+  }, [axiosData, ignore]);
 
   return { axiosData, responseData, status };
 };

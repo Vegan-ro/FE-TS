@@ -1,8 +1,7 @@
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import { PATH } from '@/constants/paths';
 
-import { MainPage } from '@/features/Main';
-import { AdminPage } from '@/features/Admin';
+import { MainPage, AdminPage } from '@/features';
 
 const Router = () => {
   return (
