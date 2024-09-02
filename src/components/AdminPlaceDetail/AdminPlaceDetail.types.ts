@@ -1,4 +1,4 @@
-import { PlaceData } from '../AdminPlaceTable/AdminPlaceTable.types';
+import { PlaceData } from '@/api/adminPlaceAPI/adminPlaceAPI.types';
 
 export interface AdminPlaceDetailProps {
   placeDetail: PlaceData;

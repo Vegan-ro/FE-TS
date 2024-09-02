@@ -1,6 +1,6 @@
-import { PlaceData } from '../AdminPlaceTable/AdminPlaceTable.types';
+import { ResPlaceData } from '@/api/adminPlaceAPI/adminPlaceAPI.types';
 
 export interface AdminPlaceModalProps {
-  placeDetail: PlaceData;
+  placeDetail: ResPlaceData;
   tab: string;
 }
