@@ -8,13 +8,11 @@ function AdminTable({ headers, children }: AdminTableProps) {
       <Table variant="simple">
         <Thead>
           <Tr>
-            <Th></Th>
             {headers.map((header: string, index: number) => (
               <Th key={index} sx={thStyles}>
                 {header}
               </Th>
             ))}
-            <Th></Th>
           </Tr>
         </Thead>
         <Tbody>{children}</Tbody>

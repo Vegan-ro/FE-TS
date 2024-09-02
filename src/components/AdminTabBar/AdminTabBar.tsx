@@ -1,8 +1,15 @@
 import { useState } from 'react';
 import { Container, Tab, TabContainer, TabContainerParent, TabContent } from './AdminTabBar.styles';
+import AdminUserTable from '../AdminUserTable/AdminUserTable';
+import { UserData } from '../AdminUserTable/AdminUserTable.types';
+import { ReviewData } from '../AdminReviewTable/AdminReviewTable.types';
+import AdminReviewTable from '../AdminReviewTable/AdminReviewTable';
 
 function AdminTabBar() {
   const [activeTab, setActiveTab] = useState<'reported' | 'place' | 'user' | 'review'>('reported');
+  const [userData] = useState<UserData[]>([]);
+  const [reviewData] = useState<ReviewData[]>([]);
+  const [loading] = useState<boolean>(true);
 
   return (
     <Container>
@@ -23,10 +30,10 @@ function AdminTabBar() {
         </TabContainer>
       </TabContainerParent>
       <TabContent style={{ display: activeTab ? 'block' : 'none' }}>
-        {/* {activeTab === 'reported' && <div>reported</div>}
+        {activeTab === 'reported' && <div>reported</div>}
         {activeTab === 'place' && <div>review</div>}
-        {activeTab === 'user' && <div>bookmark</div>}
-        {activeTab === 'review' && <div>bookmark</div>} */}
+        {activeTab === 'user' && (loading ? <div>Loading...</div> : <AdminUserTable userData={userData} />)}
+        {activeTab === 'review' && (loading ? <div>Loading...</div> : <AdminReviewTable reviews={reviewData} />)}
       </TabContent>
     </Container>
   );
