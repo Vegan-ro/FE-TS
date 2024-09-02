@@ -1,8 +1,20 @@
 import { useState } from 'react';
 import { Container, Tab, TabContainer, TabContainerParent, TabContent } from './AdminTabBar.styles';
+import AdminPlaceTable from '../AdminPlaceTable/AdminPlaceTable';
+import usePlaces from '@/utils/hooks/useAdminPlace/useAdminPlace';
 
 function AdminTabBar() {
-  const [activeTab, setActiveTab] = useState<'reported' | 'place' | 'user' | 'review'>('reported');
+  const [activeTab, setActiveTab] = useState<'reported' | 'registered' | 'user' | 'review'>('reported');
+
+  const { reportedPlaces, registeredPlaces, isLoading, isError } = usePlaces();
+
+  if (isLoading) {
+    return <div>Loading...</div>;
+  }
+
+  if (isError) {
+    return <div>{isError}</div>;
+  }
 
   return (
     <Container>
@@ -11,7 +23,7 @@ function AdminTabBar() {
           <Tab active={activeTab === 'reported'} onClick={() => setActiveTab('reported')}>
             제보 장소
           </Tab>
-          <Tab active={activeTab === 'place'} onClick={() => setActiveTab('place')}>
+          <Tab active={activeTab === 'registered'} onClick={() => setActiveTab('registered')}>
             등록 장소
           </Tab>
           <Tab active={activeTab === 'user'} onClick={() => setActiveTab('user')}>
@@ -23,10 +35,10 @@ function AdminTabBar() {
         </TabContainer>
       </TabContainerParent>
       <TabContent style={{ display: activeTab ? 'block' : 'none' }}>
-        {/* {activeTab === 'reported' && <div>reported</div>}
-        {activeTab === 'place' && <div>review</div>}
-        {activeTab === 'user' && <div>bookmark</div>}
-        {activeTab === 'review' && <div>bookmark</div>} */}
+        {activeTab === 'reported' && <AdminPlaceTable placeData={reportedPlaces} />}
+        {activeTab === 'registered' && <AdminPlaceTable placeData={registeredPlaces} />}
+        {activeTab === 'user' && <div>user table</div>}
+        {activeTab === 'review' && <div>review table</div>}
       </TabContent>
     </Container>
   );
