@@ -11,16 +11,20 @@ import {
 import { btnStyles, modalStyles } from './AdminPlaceModal.styles';
 import { AdminPlaceModalProps } from './AdminPlaceModal.types';
 import AdminPlaceDetail from '../AdminPlaceDetail/AdminPlaceDetail';
+import { createPlace, deleteReportedPlace } from '@/api/adminPlaceAPI/adminPlaceAPI';
 
 function AdminPlaceModal({ placeDetail, tab }: AdminPlaceModalProps) {
   const { isOpen, onOpen, onClose } = useDisclosure();
 
+  const { user_id, _id, ...createPlaceData } = placeDetail;
+
   const handleRegistration = async () => {
-    // try {
-    //   await createPlace(placeData);
-    // } catch (error) {
-    //   console.error(error);
-    // }
+    try {
+      await createPlace(createPlaceData);
+      await deleteReportedPlace(_id);
+    } catch (error) {
+      console.error(error);
+    }
   };
 
   return (
@@ -29,14 +33,16 @@ function AdminPlaceModal({ placeDetail, tab }: AdminPlaceModalProps) {
 
       <Modal isOpen={isOpen} onClose={onClose} closeOnOverlayClick={false} isCentered={false}>
         <ModalContent sx={modalStyles}>
-          <ModalHeader>{placeDetail.name}</ModalHeader>
+          <ModalHeader>
+            {tab == 'reported' ? `${placeDetail.name}${user_id ? ` (${user_id._id})` : ''}` : placeDetail.name}
+          </ModalHeader>
           <ModalCloseButton />
           <ModalBody>
             <AdminPlaceDetail placeDetail={placeDetail} />
           </ModalBody>
 
           <ModalFooter>
-            {tab == 'add' ? (
+            {tab == 'reported' ? (
               <Button sx={btnStyles} onClick={handleRegistration}>
                 등록
               </Button>
