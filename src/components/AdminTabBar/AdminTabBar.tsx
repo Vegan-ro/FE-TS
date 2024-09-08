@@ -1,29 +1,28 @@
 import { useState } from 'react';
 import { Container, Tab, TabContainer, TabContainerParent, TabContent } from './AdminTabBar.styles';
 import AdminPlaceTable from '../AdminPlaceTable/AdminPlaceTable';
-import usePlaces from '@/utils/hooks/useAdminPlace/useAdminPlace';
 import AdminUserTable from '../AdminUserTable/AdminUserTable';
-import { UserData } from '../AdminUserTable/AdminUserTable.types';
-import { ReviewData } from '../AdminReviewTable/AdminReviewTable.types';
 import AdminReviewTable from '../AdminReviewTable/AdminReviewTable';
+import usePlaces from '@/utils/hooks/useAdminPlace/useAdminPlace';
+import useAdminUsers from '@/utils/hooks/useAdminUser/useAdminUser';
+import useAdminReviews from '@/utils/hooks/useAdminReview/useAdminReview';
 
 function AdminTabBar() {
   const [activeTab, setActiveTab] = useState<'reported' | 'registered' | 'user' | 'review'>('reported');
 
-  const [userData] = useState<UserData[]>([]);
-  const [reviewData] = useState<ReviewData[]>([]);
-  const [loading] = useState<boolean>(true);
+  const { reportedPlaces, registeredPlaces, isLoading: placesLoading, isError: placesError } = usePlaces();
 
-  const { reportedPlaces, registeredPlaces, isLoading, isError } = usePlaces();
+  const { userData, isLoading: usersLoading, isError: usersError, handleDeleteUser } = useAdminUsers();
 
-  if (isLoading) {
+  const { reviewData, isLoading: reviewsLoading, isError: reviewsError } = useAdminReviews();
+
+  if (placesLoading || usersLoading || reviewsLoading) {
     return <div>Loading...</div>;
   }
 
-  if (isError) {
-    return <div>{isError}</div>;
+  if (placesError || usersError || reviewsError) {
+    return <div>{placesError || usersError || reviewsError}</div>;
   }
-
   return (
     <Container>
       <TabContainerParent>
@@ -45,8 +44,8 @@ function AdminTabBar() {
       <TabContent style={{ display: activeTab ? 'block' : 'none' }}>
         {activeTab === 'reported' && <AdminPlaceTable placeData={reportedPlaces} />}
         {activeTab === 'registered' && <AdminPlaceTable placeData={registeredPlaces} />}
-        {activeTab === 'user' && (loading ? <div>Loading...</div> : <AdminUserTable userData={userData} />)}
-        {activeTab === 'review' && (loading ? <div>Loading...</div> : <AdminReviewTable reviews={reviewData} />)}
+        {activeTab === 'user' && <AdminUserTable userData={userData} handleDeleteUser={handleDeleteUser} />}
+        {activeTab === 'review' && <AdminReviewTable reviews={reviewData} />}
       </TabContent>
     </Container>
   );
