@@ -71,10 +71,10 @@ function Place() {
               <ContentContainer>
                 <NameContainer>
                   <Name>{place?.name}</Name>
+                  <TagContainer>
+                    <Tag>{place?.vegan_option ? '일부 비건' : '비건'}</Tag>
+                  </TagContainer>
                 </NameContainer>
-                <TagContainer>
-                  <Tag>{place?.vegan_option ? '일부 비건' : '비건'}</Tag>
-                </TagContainer>
                 <InfoContainer>
                   <Info>
                     <DistanceIcon>
