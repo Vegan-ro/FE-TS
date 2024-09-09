@@ -17,6 +17,7 @@ import { Link } from 'react-scroll';
 import EditDeleteDrawer from '@/components/EditDeleteDrawer/EditDeleteDrawer';
 import { useState } from 'react';
 import { useParams } from 'react-router-dom';
+import Navbar from '@/components/Navbar/Navbar';
 
 export default function Review() {
   const { placeId } = useParams();
@@ -27,6 +28,8 @@ export default function Review() {
   if (isLoading) return <div>로딩 중...</div>;
   if (isError) return <div>Error: {error.message}</div>;
 
+  console.log(reviews);
+
   const openEditDeleteDrawer = (review: Review) => {
     setSelectedReview(review);
     setIsEditDeleteDrawerOpen(true);
@@ -34,6 +37,7 @@ export default function Review() {
 
   return (
     <>
+      <Navbar title={`${reviews?.reviews[0].place_id?.name} 리뷰`} icon="null" />
       <Container id="write-review">
         <ReviewWrapper>
           <Header>
