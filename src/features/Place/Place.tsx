@@ -1,3 +1,4 @@
+import Navbar from '@/components/Navbar/Navbar';
 import PlaceDetailCard from '@/components/PlaceDetailCard/PlaceDetailCard';
 import PlaceMap from '@/components/PlaceMap/PlaceMap';
 import { usePlace } from '@/hooks/Place/usePlace';
@@ -14,6 +15,7 @@ function Place() {
 
   return (
     <>
+      <Navbar title={place?.name} icon="null" />
       <PlaceMap address={place?.address} name={place?.name} />
       <PlaceDetailCard place={place} />
     </>
