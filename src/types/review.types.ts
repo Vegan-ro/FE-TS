@@ -3,9 +3,9 @@ import { User } from './user.types';
 
 export type Review = {
   _id: string;
+  place_id: Place;
   content: string;
+  user_id: User;
   createdAt: string;
   updatedAt: string;
-  user_id: User;
-  place_id: Place;
 };
