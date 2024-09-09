@@ -165,9 +165,6 @@ export const VeganTag = styled.div`
 
 export const ReviewContainer = styled.div`
   width: 100%;
-  position: sticky;
-  top: 0;
-  z-index: 1;
   background-color: #fff;
 `;
 
@@ -184,4 +181,9 @@ export const MenuContainer = styled.div`
   right: 16px;
   background: transparent;
   z-index: 999;
+`;
+
+export const DetailContainer = styled.div`
+  width: 100%;
+  background: #fff;
 `;
