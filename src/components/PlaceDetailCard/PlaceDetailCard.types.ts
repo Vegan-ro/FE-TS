@@ -3,6 +3,6 @@ export type PlaceDetailCardProps = {
     address?: string;
     tel?: string;
     open_times?: string[];
-    sns_url?: string;
+    sns_url?: string[];
   };
 };

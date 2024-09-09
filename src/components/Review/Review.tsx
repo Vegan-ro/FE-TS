@@ -1,6 +1,6 @@
 // import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { useGetReviews } from '../../hooks/useReview';
+import { useGetReviews } from '@/utils/hooks/index';
 import ReviewCard from '@/components/ReviewCard/ReviewCard';
 import type { Review } from '@/types/review.types';
 import {
