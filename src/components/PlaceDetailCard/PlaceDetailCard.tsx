@@ -10,14 +10,9 @@ import {
   HourText,
 } from './PlaceDetailCard.styles';
 import { IoLocationOutline, IoCallOutline, IoTimeOutline, IoGlobeOutline } from 'react-icons/io5';
-import { usePlace } from '@/hooks/Place/usePlace';
+import { PlaceDetailCardProps } from './PlaceDetailCard.types';
 
-export default function PlaceDetailCard({ placeId }: { placeId: string }) {
-  const { data: place, isLoading, error } = usePlace(placeId);
-
-  if (isLoading) return <div>Loading...</div>;
-  if (error || !place) return <div>Error</div>;
-
+export default function PlaceDetailCard({ place }: PlaceDetailCardProps) {
   return (
     <Container>
       <TitleWrapper>
