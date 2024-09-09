@@ -28,8 +28,6 @@ export default function Review() {
   if (isLoading) return <div>로딩 중...</div>;
   if (isError) return <div>Error: {error.message}</div>;
 
-  console.log(reviews);
-
   const openEditDeleteDrawer = (review: Review) => {
     setSelectedReview(review);
     setIsEditDeleteDrawerOpen(true);
