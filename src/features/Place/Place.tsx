@@ -2,7 +2,7 @@ import Navbar from '@/components/Navbar/Navbar';
 import PlaceDetailCard from '@/components/PlaceDetailCard/PlaceDetailCard';
 import PlaceMap from '@/components/PlaceMap/PlaceMap';
 import Bookmark from '@/components/Bookmark/Bookmark';
-import { useGetPlace } from '@/hooks/usePlace';
+import { useGetPlace } from '@/utils/hooks/index';
 import { useParams } from 'react-router-dom';
 import {
   Container,
@@ -26,15 +26,15 @@ import {
   DetailContainer,
 } from './Place.styles';
 import { IoNavigateCircleOutline } from 'react-icons/io5';
-import useCurrentLocation from '@/hooks/useCurrentLocation';
-import getDistance from '@/hooks/useDistance';
+import useCurrentLocation from '@/utils/hooks/useCurrentLocation/useCurrentLocation';
+import { getDistance } from '@/utils/hooks/index';
 import Review from '@/components/Review/Review';
 import MenuButton from '@/components/MenuButton/MenuButton';
 
 function Place() {
   const { placeId } = useParams();
   const { data: place, isLoading, isError } = useGetPlace(placeId ?? '');
-  const { location, isLoading: isLoadingLocation, error: locationError } = useCurrentLocation();
+  const { location, isLoading: isLoadingLocation, isError: locationError } = useCurrentLocation();
 
   if (isLoading) return <div>로딩중...</div>;
   if (isError) return <div>에러가 발생했습니다.</div>;
@@ -51,18 +51,18 @@ function Place() {
 
   const distance =
     getDistance({
-      lat1: location.center.lat,
-      lon1: location.center.lng,
-      lat2: place.location.coordinates[1],
-      lon2: place.location.coordinates[0],
+      lat1: location?.center.lat ?? 0,
+      lon1: location?.center.lng ?? 0,
+      lat2: place?.location.coordinates[1] ?? 0,
+      lon2: place?.location.coordinates[0] ?? 0,
     }) / 1000;
 
   return (
     <Container>
-      <Navbar title={place?.name} icon="null" />
+      <Navbar title={place?.name ?? ''} icon="null" />
       <ContentContainer>
         <ImageSection>
-          <PlaceMap address={place?.address} name={place?.name} />
+          <PlaceMap address={place?.address ?? ''} name={place?.name ?? ''} />
           <OuterContainer>
             <Content>
               <InnerContainer>
@@ -90,10 +90,10 @@ function Place() {
         </ImageSection>
       </ContentContainer>
       <DetailContainer>
-        <PlaceDetailCard place={place} />
+        <PlaceDetailCard place={place ?? { address: '', tel: '', open_times: [], sns_url: [] }} />
       </DetailContainer>
       <ReviewContainer>
-        <Review placeId={placeId} address={place?.address} />
+        <Review placeId={placeId} address={place?.address ?? ''} />
         <MenuContainer>
           <MenuButton />
         </MenuContainer>
