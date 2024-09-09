@@ -30,8 +30,9 @@ function AdminReviewTable({ reviews }: { reviews: ReviewData[] }) {
   ) : (
     <>
       <AdminTable headers={headers}>
-        {reviews.map((review) => (
+        {reviews.map((review, index: number) => (
           <Tr key={review._id} sx={thStyles}>
+            <Td>{index + 1}</Td>
             <Td>{review.place_id?.name || '정보 없음'}</Td>
             <Td>{review.user_id ? review.user_id.nickname : '정보 없음'}</Td>
             <Td>{review.content}</Td>

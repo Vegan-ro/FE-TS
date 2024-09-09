@@ -12,7 +12,7 @@ export interface UserData {
   updatedAt: string;
 }
 
-// 유저 테이블에 필요한 데이터의 타입을 정의하는 인터페이스
 export interface AdminUserTableProps {
   userData: UserData[];
+  handleDeleteUser: (userId: string) => Promise<void>; // handleDeleteUser 추가
 }

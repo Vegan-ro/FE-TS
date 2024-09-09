@@ -6,14 +6,14 @@ import { IoTrashOutline } from 'react-icons/io5';
 import { ButtonWrapper, DataContent, IconWrapper, NoData, NoDataText, thStyles } from './AdminUserTable.styles';
 import { useState } from 'react';
 
-function AdminUserTable({ userData }: AdminUserTableProps) {
+function AdminUserTable({ userData, handleDeleteUser }: AdminUserTableProps) {
   const [selectedUser, setSelectedUser] = useState<UserData | null>(null);
   const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
 
   const headers = ['닉네임', '이메일', '컴플레인 횟수', '관리자 여부', '상세정보'];
 
-  const handleDelete = async () => {
-    // 유저 삭제 로직
+  const handleDelete = async (userId: string) => {
+    await handleDeleteUser(userId);
   };
 
   const handleOpenModal = (user: UserData) => {
@@ -35,8 +35,9 @@ function AdminUserTable({ userData }: AdminUserTableProps) {
   ) : (
     <>
       <AdminTable headers={headers}>
-        {userData.map((user) => (
+        {userData.map((user, index: number) => (
           <Tr key={user._id} sx={thStyles}>
+            <Td>{index + 1}</Td>
             <Td>{user.nickname}</Td>
             <Td>{user.email}</Td>
             <Td>{user.complaint}</Td>
@@ -44,7 +45,7 @@ function AdminUserTable({ userData }: AdminUserTableProps) {
             <Td>
               <ButtonWrapper>
                 <IconWrapper onClick={() => handleOpenModal(user)}>상세정보</IconWrapper>
-                <IconWrapper onClick={() => handleDelete()}>
+                <IconWrapper onClick={() => handleDelete(user._id)}>
                   <IoTrashOutline size="15" />
                 </IconWrapper>
               </ButtonWrapper>
