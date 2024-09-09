@@ -1,19 +1,14 @@
 import React from 'react';
-import { Drawer, DrawerBody, DrawerContent, DrawerHeader, DrawerOverlay, useDisclosure } from '@chakra-ui/react';
+import { Drawer, DrawerBody, DrawerContent, DrawerHeader, DrawerOverlay } from '@chakra-ui/react';
 import { CustomDrawerProps } from './Drawer.types';
 
-function CustomDrawer({ content, size = 'xl', trigger }: CustomDrawerProps) {
-  const { isOpen, onOpen, onClose } = useDisclosure();
-
-  const triggerWithOnClick = React.cloneElement(trigger, { onClick: onOpen });
-
+function CustomDrawer({ header, content, size = 'xl', isOpen, onClose }: CustomDrawerProps) {
   return (
     <>
-      {triggerWithOnClick}
       <Drawer placement="bottom" onClose={onClose} isOpen={isOpen} size={size}>
         <DrawerOverlay />
         <DrawerContent>
-          <DrawerHeader borderBottomWidth="1px">Drawer</DrawerHeader>
+          <DrawerHeader borderBottomWidth="1px">{header}</DrawerHeader>
           <DrawerBody>{content}</DrawerBody>
         </DrawerContent>
       </Drawer>

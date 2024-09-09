@@ -64,7 +64,6 @@ export const VeganIcon = styled.div`
 
 export const OuterContainer = styled.div`
   width: 100%;
-  height: 100%;
 `;
 
 export const InnerContainer = styled.div`
@@ -101,12 +100,12 @@ export const Name = styled.div`
 `;
 
 export const TagContainer = styled.div`
-  padding-left: 6px;
-  padding-right: 6px;
-  padding-top: 4px;
-  padding-bottom: 4px;
+  padding-left: 4px;
+  padding-right: 4px;
+  padding-top: 2px;
+  padding-bottom: 2px;
   background: rgba(79, 131, 55, 0.1);
-  border-radius: 4px;
+  border-radius: 2px;
   justify-content: center;
   align-items: center;
   gap: 10px;

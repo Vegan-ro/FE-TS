@@ -125,3 +125,7 @@ export const LoadMoreButtonIcon = styled.div`
   position: absolute;
   border: 1.12px solid #c4c4c4;
 `;
+
+export const DrawerContainer = styled.div`
+  width: 100%;
+`;

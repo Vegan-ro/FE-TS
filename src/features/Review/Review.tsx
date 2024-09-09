@@ -1,5 +1,3 @@
-// import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
 import { useGetReviews } from '../../hooks/useReview';
 import ReviewCard from '@/components/ReviewCard/ReviewCard';
 import type { Review } from '@/types/review.types';
@@ -14,23 +12,19 @@ import {
   ReviewContent,
   NoReview,
   NoReviewText,
-  LoadMoreButtonContainer,
-  LoadMoreButtonText,
-  LoadMoreButtonIconContainer,
 } from '@/components/Review/Review.styles';
-import { IoChevronDownSharp } from 'react-icons/io5';
-import { ReviewProps } from './Review.types';
 import { Link } from 'react-scroll';
 import EditDeleteDrawer from '@/components/EditDeleteDrawer/EditDeleteDrawer';
 import { useState } from 'react';
+import { useParams } from 'react-router-dom';
 
-export default function Review({ placeId }: ReviewProps) {
-  const navigate = useNavigate();
-  const { data: reviews, isLoading, isError, error } = useGetReviews(placeId);
+export default function Review() {
+  const { placeId } = useParams();
+  const { data: reviews, isLoading, isError, error } = useGetReviews(placeId ?? '');
   // const [visibleReviews, setVisibleReviews] = useState<number>(3);
   const [isEditDeleteDrawerOpen, setIsEditDeleteDrawerOpen] = useState<boolean>(false);
   const [selectedReview, setSelectedReview] = useState<Review | null>(null);
-  if (isLoading) return <div>Loading...</div>;
+  if (isLoading) return <div>로딩 중...</div>;
   if (isError) return <div>Error: {error.message}</div>;
 
   const openEditDeleteDrawer = (review: Review) => {
@@ -59,7 +53,7 @@ export default function Review({ placeId }: ReviewProps) {
             </ReviewContent>
           ) : (
             <>
-              {reviews?.reviews.slice(0, 3).map((review: Review) => (
+              {reviews?.reviews.map((review: Review) => (
                 <ReviewCard
                   key={review._id}
                   nickname={review.user_id.nickname}
@@ -70,18 +64,6 @@ export default function Review({ placeId }: ReviewProps) {
                   onClick={() => openEditDeleteDrawer(review)}
                 />
               ))}
-              {reviews?.reviews && reviews?.reviews.length > 3 && (
-                <LoadMoreButtonContainer
-                  onClick={() => {
-                    navigate(`/place/${placeId}/review`);
-                  }}
-                >
-                  <LoadMoreButtonText>더보기</LoadMoreButtonText>
-                  <LoadMoreButtonIconContainer>
-                    <IoChevronDownSharp size="15" />
-                  </LoadMoreButtonIconContainer>
-                </LoadMoreButtonContainer>
-              )}
             </>
           )}
         </ReviewWrapper>
