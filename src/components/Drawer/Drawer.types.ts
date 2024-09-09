@@ -1,8 +1,11 @@
 import { DrawerProps } from '@chakra-ui/react';
-import { ReactElement, ReactNode } from 'react';
+import { ReactNode } from 'react';
 
 export type CustomDrawerProps = {
+  width?: string;
+  header?: ReactNode;
   content: ReactNode;
   size?: DrawerProps['size'];
-  trigger: ReactElement;
+  isOpen: boolean;
+  onClose: () => void;
 };
