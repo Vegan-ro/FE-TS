@@ -7,6 +7,5 @@ export const getReviewsByPlaceId = async (
   pageSize: number,
 ): Promise<getReviewsByPlaceIdResponse> => {
   const response = await apiFetch.get(`/reviews?placeId=${placeId}&pageNumber=${pageNumber}&pageSize=${pageSize}`);
-  console.log(response.data.data);
   return response.data.data;
 };
