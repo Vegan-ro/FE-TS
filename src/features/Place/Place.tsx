@@ -2,7 +2,7 @@ import Navbar from '@/components/Navbar/Navbar';
 import PlaceDetailCard from '@/components/PlaceDetailCard/PlaceDetailCard';
 import PlaceMap from '@/components/PlaceMap/PlaceMap';
 import Bookmark from '@/components/Bookmark/Bookmark';
-import { usePlace } from '@/hooks/Place/usePlace';
+import { useGetPlace } from '@/hooks/usePlace';
 import { useParams } from 'react-router-dom';
 import {
   Container,
@@ -21,14 +21,19 @@ import {
   Name,
   Distance,
   Loading,
+  ReviewContainer,
+  MenuContainer,
+  DetailContainer,
 } from './Place.styles';
 import { IoNavigateCircleOutline } from 'react-icons/io5';
 import useCurrentLocation from '@/hooks/useCurrentLocation';
 import getDistance from '@/hooks/useDistance';
+import Review from '@/components/Review/Review';
+import MenuButton from '@/components/MenuButton/MenuButton';
 
 function Place() {
   const { placeId } = useParams();
-  const { data: place, isLoading, isError } = usePlace(placeId ?? '');
+  const { data: place, isLoading, isError } = useGetPlace(placeId ?? '');
   const { location, isLoading: isLoadingLocation, error: locationError } = useCurrentLocation();
 
   if (isLoading) return <div>로딩중...</div>;
@@ -84,9 +89,15 @@ function Place() {
           </OuterContainer>
         </ImageSection>
       </ContentContainer>
-      <>
+      <DetailContainer>
         <PlaceDetailCard place={place} />
-      </>
+      </DetailContainer>
+      <ReviewContainer>
+        <Review placeId={placeId} address={place?.address} />
+        <MenuContainer>
+          <MenuButton />
+        </MenuContainer>
+      </ReviewContainer>
     </Container>
   );
 }
