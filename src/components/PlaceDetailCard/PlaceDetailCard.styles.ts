@@ -1,6 +1,6 @@
 import styled from '@emotion/styled';
 
-const Container = styled.div`
+export const Container = styled.div`
   width: 100%;
   height: 100%;
   padding: 16px;
@@ -12,7 +12,7 @@ const Container = styled.div`
   display: inline-flex;
 `;
 
-const TitleWrapper = styled.div`
+export const TitleWrapper = styled.div`
   align-self: stretch;
   padding-bottom: 6px;
   justify-content: flex-start;
@@ -21,7 +21,7 @@ const TitleWrapper = styled.div`
   display: inline-flex;
 `;
 
-const Title = styled.div`
+export const Title = styled.div`
   color: #1f1f1f;
   font-size: 16px;
   font-family: 'Pretendard';
@@ -29,7 +29,7 @@ const Title = styled.div`
   word-wrap: break-word;
 `;
 
-const InfoWrapper = styled.div`
+export const InfoWrapper = styled.div`
   align-self: stretch;
   border-radius: 4px;
   flex-direction: column;
@@ -39,7 +39,7 @@ const InfoWrapper = styled.div`
   display: flex;
 `;
 
-const InfoItem = styled.div`
+export const InfoItem = styled.div`
   align-self: stretch;
   justify-content: flex-start;
   align-items: flex-start;
@@ -47,18 +47,18 @@ const InfoItem = styled.div`
   display: inline-flex;
 `;
 
-const IconWrapper = styled.div`
+export const IconWrapper = styled.div`
   width: 16px;
   height: 16px;
   position: relative;
 `;
 
-const Icon = styled.div`
+export const Icon = styled.div`
   position: absolute;
   border: 1px #8f8f8f solid;
 `;
 
-const InfoText = styled.div`
+export const InfoText = styled.div`
   flex: 1 1 0;
   color: #1f1f1f;
   font-size: 12px;
@@ -67,7 +67,7 @@ const InfoText = styled.div`
   word-wrap: break-word;
 `;
 
-const HoursContainer = styled.div`
+export const HoursContainer = styled.div`
   margin-left: 29px;
   width: 100%;
   height: 100%;
@@ -76,7 +76,7 @@ const HoursContainer = styled.div`
   flex-direction: column;
 `;
 
-const HourText = styled.div`
+export const HourText = styled.div`
   flex: 1 1 0;
   color: #1f1f1f;
   font-size: 12px;
@@ -85,21 +85,7 @@ const HourText = styled.div`
   word-wrap: break-word;
 `;
 
-const HoursWrapper = `
-display: flex;
-align-items: center;
+export const HoursWrapper = styled.div`
+  display: flex;
+  align-items: center;
 `;
-
-export {
-  Container,
-  TitleWrapper,
-  Title,
-  InfoWrapper,
-  InfoItem,
-  IconWrapper,
-  Icon,
-  InfoText,
-  HoursContainer,
-  HourText,
-  HoursWrapper,
-};
