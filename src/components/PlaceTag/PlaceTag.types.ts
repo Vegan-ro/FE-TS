@@ -1,7 +1,7 @@
 export interface PlaceTagProps {
   title: string;
   onClick: () => void;
-  isSelected: number;
+  isSelected: boolean;
 }
 
 export interface PlaceTagBtnProps {
