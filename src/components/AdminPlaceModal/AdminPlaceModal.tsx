@@ -11,7 +11,7 @@ import {
 import { btnStyles, modalStyles } from './AdminPlaceModal.styles';
 import { AdminPlaceModalProps } from './AdminPlaceModal.types';
 import AdminPlaceDetail from '../AdminPlaceDetail/AdminPlaceDetail';
-import { createPlace, deleteReportedPlace } from '@/api/adminPlaceAPI/adminPlaceAPI';
+import { createPlace, deleteReportedPlace } from '@/api/adminAPI/adminAPI';
 
 function AdminPlaceModal({ placeDetail, tab }: AdminPlaceModalProps) {
   const { isOpen, onOpen, onClose } = useDisclosure();

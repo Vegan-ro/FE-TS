@@ -1,6 +1,6 @@
 // hooks/useAdminUsers.ts
 import { useState, useEffect } from 'react';
-import { getAllUsers, deleteUser } from '@/api/adminUserAPI/adminUserAPI';
+import { getAllUsers, deleteUser } from '@/api/adminAPI/adminAPI';
 import { UserData } from '@/components/AdminUserTable/AdminUserTable.types';
 
 const useAdminUsers = () => {

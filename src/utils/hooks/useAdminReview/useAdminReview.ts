@@ -1,6 +1,6 @@
 // hooks/useAdminReviews.ts
 import { useState, useEffect } from 'react';
-import { getAllReviews } from '@/api/adminReviewAPI/adminReviewAPI'; // 리뷰 API 함수 임포트
+import { getAllReviews } from '@/api/adminAPI/adminAPI'; // 리뷰 API 함수 임포트
 import { ReviewData } from '@/components/AdminReviewTable/AdminReviewTable.types';
 
 const useAdminReviews = () => {
