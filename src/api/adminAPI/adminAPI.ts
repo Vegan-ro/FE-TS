@@ -1,5 +1,5 @@
 import apiFetch from '@/api/common';
-import { PlaceData } from './adminPlaceAPI.types';
+import { PlaceData } from './adminAPI.types';
 
 // 제보 장소 등록
 const createPlace = async (placeData: PlaceData) => {
@@ -36,6 +36,20 @@ const patchRegisteredPlace = async (placeId: string) => {
   return await apiFetch.patch(`/admin/places/${placeId}`);
 };
 
+//관리자 리뷰 조회
+const getAllReviews = async () => {
+  return await apiFetch.get(`/admin/reviews`);
+};
+
+//관리자 유저 조회
+const getAllUsers = async () => {
+  return await apiFetch.get('/admin/users');
+};
+//관리자 유저 삭제
+const deleteUser = async (userId: string) => {
+  return await apiFetch.delete(`/admin/users/${userId}`);
+};
+
 export {
   createPlace,
   getReportedPlaces,
@@ -44,4 +58,7 @@ export {
   updateRegisteredPlace,
   deleteRegisteredPlace,
   patchRegisteredPlace,
+  getAllReviews,
+  getAllUsers,
+  deleteUser,
 };

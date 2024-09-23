@@ -1,4 +1,4 @@
-import { ResPlaceData } from '@/api/adminPlaceAPI/adminPlaceAPI.types';
+import { ResPlaceData } from '@/api/adminAPI/adminAPI.types';
 
 export interface UseGetAdminPlaceReturn {
   reportedPlaces: ResPlaceData[];
