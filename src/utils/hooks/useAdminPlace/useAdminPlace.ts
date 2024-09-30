@@ -1,47 +1,59 @@
-import { useState, useEffect, useCallback } from 'react';
+import { useQuery } from '@tanstack/react-query';
 import { getRegisteredPlaces, getReportedPlaces } from '@/api/adminAPI/adminAPI';
 import { ResPlaceData } from '@/api/adminAPI/adminAPI.types';
 import { UseGetAdminPlaceReturn } from './useAdminPlace.types';
 
-function useAdminPlaces(): UseGetAdminPlaceReturn {
-  const [reportedPlaces, setReportedPlaces] = useState<ResPlaceData[] | null>(null);
-  const [registeredPlaces, setRegisteredPlaces] = useState<ResPlaceData[] | null>(null);
-  const [isLoading, setIsLoading] = useState<boolean>(false);
-  const [isError, setIsError] = useState<string | null>(null);
+function useAdminPlace(): UseGetAdminPlaceReturn {
+  const fetchReportedPlaces = async (): Promise<ResPlaceData[] | null> => {
+    const response = await getReportedPlaces(1, 40);
+    return response.data.data.reportedPlaces;
+  };
 
-  const fetchPlaces = useCallback(async () => {
-    setIsLoading(true);
-    setIsError(null);
+  const fetchRegisteredPlaces = async (): Promise<ResPlaceData[] | null> => {
+    const response = await getRegisteredPlaces(1, 40);
+    return response.data.data;
+  };
 
-    try {
-      const [reportedResponse, registeredResponse] = await Promise.all([
-        getReportedPlaces(1, 10),
-        getRegisteredPlaces(1, 10),
-      ]);
+  const {
+    data: reportedPlaces,
+    isLoading: isLoadingReported,
+    isError: isErrorReported,
+    error: errorReported,
+    refetch: refetchReported,
+  } = useQuery({
+    queryKey: ['reportedPlaces', 1, 40],
+    queryFn: fetchReportedPlaces,
+    retry: false,
+  });
 
-      setReportedPlaces(reportedResponse.data.data.reportedPlaces);
-      setRegisteredPlaces(registeredResponse.data.data);
-    } catch (error) {
-      setIsError('Error occurred while loading data.');
-      console.error('Failed to fetch places', error);
-    } finally {
-      setIsLoading(false);
-    }
-  }, []);
+  const {
+    data: registeredPlaces,
+    isLoading: isLoadingRegistered,
+    isError: isErrorRegistered,
+    error: errorRegistered,
+    refetch: refetchRegistered,
+  } = useQuery({
+    queryKey: ['registeredPlaces', 1, 40],
+    queryFn: fetchRegisteredPlaces,
+    retry: false,
+  });
 
-  useEffect(() => {
-    fetchPlaces();
-  }, [fetchPlaces]);
-
-  const dataIsDefault = reportedPlaces === null || registeredPlaces === null;
+  const isLoading = isLoadingReported || isLoadingRegistered;
+  const isError = isErrorReported || isErrorRegistered;
+  const errorMessage = errorReported?.message || errorRegistered?.message || null;
 
   return {
     reportedPlaces: reportedPlaces ?? [],
     registeredPlaces: registeredPlaces ?? [],
-    isLoading: isLoading || dataIsDefault,
+    isLoading,
     isError,
-    fetchPlaces,
+    errorMessage,
+    fetchPlaces: () => {
+      console.log('refetch');
+      refetchReported();
+      refetchRegistered();
+    },
   };
 }
 
-export default useAdminPlaces;
+export default useAdminPlace;
