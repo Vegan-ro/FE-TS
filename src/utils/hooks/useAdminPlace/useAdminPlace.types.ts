@@ -4,6 +4,7 @@ export interface UseGetAdminPlaceReturn {
   reportedPlaces: ResPlaceData[];
   registeredPlaces: ResPlaceData[];
   isLoading: boolean;
-  isError: string | null;
+  isError: boolean;
+  errorMessage: string | null;
   fetchPlaces: () => void;
 }

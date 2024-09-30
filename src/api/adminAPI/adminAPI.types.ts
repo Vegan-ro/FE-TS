@@ -1,7 +1,7 @@
 export interface PlaceData {
   name: string;
   category: string;
-  category_img: CategoryData;
+  // category_img: CategoryData;
   vegan_option: boolean;
   tel: string;
   address: string;
@@ -15,6 +15,9 @@ export interface PlaceData {
 export interface ResPlaceData extends PlaceData {
   _id: string;
   user_id?: UserId;
+  category_img: CategoryData;
+  createdAt: string;
+  updatedAt: string;
 }
 
 interface CategoryData {
