@@ -118,7 +118,7 @@ function AddPlace() {
     const data = AddPlaceData();
     try {
       await createReportPlace(data);
-      navigate('/home');
+      navigate('/');
     } catch (error) {
       console.error(error);
     }

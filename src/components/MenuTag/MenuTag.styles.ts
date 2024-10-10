@@ -21,6 +21,9 @@ export const MenuTagContent = styled.p<MenuTagBtnProps>`
   ${(props) => props.theme.viewPoint.desktop`
     font-size: 16px;
   `}
+  ${(props) => props.theme.viewPoint.tablet`
+    font-size: 15px;
+  `}
   ${(props) => props.theme.viewPoint.mobile`
     font-size: 14px;
   `}

@@ -2,6 +2,7 @@ import styled from '@emotion/styled';
 import GlobalStyle from '@/styles/GlobalStyle';
 import { useMediaQuery } from 'react-responsive';
 import Landing from './components/Landing/Landing';
+import Toast from '@/utils/hooks/useToast/useToast';
 
 import Routes from '@/routes/index';
 
@@ -38,6 +39,7 @@ function App(): JSX.Element {
       <AppContainer>
         <GlobalStyle />
         <Routes />
+        <Toast isDesktopOrLaptop={isDesktopOrLaptop} />
       </AppContainer>
     </AppWrapper>
   );
