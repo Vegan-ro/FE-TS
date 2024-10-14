@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { addressApiProps } from '@/api/addressApi/addressApi.types';
+import { addressApiProps } from '@/requests/address/fetchAddress.types';
 
 export const getAddressCoordinates = async (address: addressApiProps) => {
   try {

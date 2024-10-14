@@ -1,6 +1,6 @@
 import { useQuery } from '@tanstack/react-query';
-import { getRegisteredPlaces, getReportedPlaces } from '@/api/adminAPI/adminAPI';
-import { ResPlaceData } from '@/api/adminAPI/adminAPI.types';
+import { getRegisteredPlaces, getReportedPlaces } from '@/requests/admin/fetchAdmin';
+import { ResPlaceData } from '@/requests/admin/fetchAdmin.types';
 import { UseGetAdminPlaceReturn } from './useAdminPlace.types';
 
 function useAdminPlace(): UseGetAdminPlaceReturn {

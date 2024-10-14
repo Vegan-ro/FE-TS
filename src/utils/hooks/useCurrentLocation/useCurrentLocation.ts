@@ -1,5 +1,4 @@
 import { useState, useEffect, useCallback } from 'react';
-
 import { Location, UseCurrentLocationReturn } from './useCurrentLocation.types';
 
 const useCurrentLocation = (): UseCurrentLocationReturn => {

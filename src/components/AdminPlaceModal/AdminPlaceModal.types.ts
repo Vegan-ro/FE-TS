@@ -1,4 +1,4 @@
-import { ResPlaceData } from '@/api/adminAPI/adminAPI.types';
+import { ResPlaceData } from '@/requests/admin/fetchAdmin.types';
 
 export interface AdminPlaceModalProps {
   placeDetail: ResPlaceData;
