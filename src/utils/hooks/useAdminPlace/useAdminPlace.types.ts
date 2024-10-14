@@ -1,8 +1,10 @@
-import { ResPlaceData } from '@/requests/admin/fetchAdminPlace.types';
+import { ResPlaceData } from '@/api/adminAPI/adminAPI.types';
+
 export interface UseGetAdminPlaceReturn {
   reportedPlaces: ResPlaceData[];
   registeredPlaces: ResPlaceData[];
   isLoading: boolean;
-  isError: string | null;
+  isError: boolean;
+  errorMessage: string | null;
   fetchPlaces: () => void;
 }

@@ -1,7 +1,7 @@
 export interface MenuTagProps {
   title: string;
   onClick: () => void;
-  isSelected: number;
+  isSelected: boolean;
 }
 
 export interface MenuTagBtnProps {

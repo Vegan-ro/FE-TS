@@ -11,17 +11,22 @@ import {
 import { btnStyles, modalStyles } from './AdminPlaceModal.styles';
 import { AdminPlaceModalProps } from './AdminPlaceModal.types';
 import AdminPlaceDetail from '../AdminPlaceDetail/AdminPlaceDetail';
-import { createPlace, deleteReportedPlace } from '@/requests/admin/fetchAdminPlace';
+import { createPlace, deleteReportedPlace } from '@/api/adminAPI/adminAPI';
 
-function AdminPlaceModal({ placeDetail, tab }: AdminPlaceModalProps) {
+function AdminPlaceModal({ placeDetail, tab, fetchPlaces }: AdminPlaceModalProps) {
   const { isOpen, onOpen, onClose } = useDisclosure();
 
-  const { user_id, _id, ...createPlaceData } = placeDetail;
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  const { user_id, _id, category_img, createdAt, updatedAt, ...createPlaceData } = placeDetail;
 
   const handleRegistration = async () => {
     try {
       await createPlace(createPlaceData);
       await deleteReportedPlace(_id);
+      alert('장소 등록이 완료되었습니다.');
+      onClose();
+      fetchPlaces();
+      console.log('Places fetched after registration.');
     } catch (error) {
       console.error(error);
     }
