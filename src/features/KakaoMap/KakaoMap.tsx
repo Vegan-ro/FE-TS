@@ -1,6 +1,5 @@
 import { useState, useRef, useEffect } from 'react';
 import { Map, MapMarker } from 'react-kakao-maps-sdk';
-
 // import PlaceMarkers from '../KakaoMap/PlaceMarkers';
 import currentPositionPin from '@/assets/images/current_position_pin.png';
 
@@ -8,7 +7,6 @@ import { KakaoMapProps, Location } from './KakaoMap.types';
 
 const KakaoMap = (props: KakaoMapProps) => {
   const { centerMove } = props;
-
   const [currentLocation, setCurrentLocation] = useState<Location>({
     level: 6,
     center: {
@@ -19,7 +17,6 @@ const KakaoMap = (props: KakaoMapProps) => {
 
   const prevCenterRef = useRef<{ lat: number; lng: number } | null>(null);
 
-  /*현재 위치 이동, 중앙 정렬*/
   useEffect(() => {
     if (centerMove) {
       setCurrentLocation((prev) => ({
@@ -29,7 +26,6 @@ const KakaoMap = (props: KakaoMapProps) => {
     }
   }, [centerMove]);
 
-  /*현재 위치 갱신 시, 이전 좌표 정보 업데이트*/
   useEffect(() => {
     if (currentLocation.center) {
       prevCenterRef.current = currentLocation.center;

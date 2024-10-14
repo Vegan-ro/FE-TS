@@ -4,7 +4,7 @@ import { AdminPlaceTableProps } from './AdminPlaceTable.types';
 import AdminPlaceModal from '../AdminPlaceModal/AdminPlaceModal';
 import { IoTrashOutline } from 'react-icons/io5';
 import { ButtonWrapper, DataContent, IconWrapper, NoData, NoDataText, tdStyles } from './AdminPlaceTable.styles';
-import { deleteRegisteredPlace, deleteReportedPlace } from '@/api/adminPlaceAPI/adminPlaceAPI';
+import { deleteRegisteredPlace, deleteReportedPlace } from '@/requests/admin/fetchAdminPlace';
 
 function AdminPlaceTable({ placeData }: AdminPlaceTableProps) {
   const headers = ['가게 이름', '가게 형태', '채식 메뉴'];

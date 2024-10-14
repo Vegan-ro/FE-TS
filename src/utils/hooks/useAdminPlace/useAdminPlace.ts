@@ -1,6 +1,6 @@
 import { useState, useEffect, useCallback } from 'react';
-import { getRegisteredPlaces, getReportedPlaces } from '@/api/adminPlaceAPI/adminPlaceAPI';
-import { ResPlaceData } from '@/api/adminPlaceAPI/adminPlaceAPI.types';
+import { getRegisteredPlaces, getReportedPlaces } from '@/requests/admin/fetchAdminPlace';
+import { ResPlaceData } from '@/requests/admin/fetchAdminPlace.types';
 import { UseGetAdminPlaceReturn } from './useAdminPlace.types';
 
 function useAdminPlaces(): UseGetAdminPlaceReturn {
