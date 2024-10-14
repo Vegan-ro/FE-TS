@@ -5,12 +5,8 @@ export const Menu = styled.menu`
   display: flex;
   flex-direction: column;
   gap: 8px;
-  position: absolute;
-  bottom: 16px;
-  right: 16px;
   z-index: 999;
 `;
-
 export const MenuList = styled.li<MenuListProps>`
   display: ${(props) => (props.$isOpened ? 'flex' : 'none')};
   flex-direction: column-reverse;

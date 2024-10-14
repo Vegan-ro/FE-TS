@@ -1,12 +1,10 @@
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useMenuStore } from '@/stores/useMenuStore';
-
 import { Menu, MenuList } from './MenuButton.styles';
 import RoundButton from '@/components/RoundButton/RoundButton';
-
 import { PATH, PathKeys } from '@/constants/paths';
-import { MENU_TYPES, MenuType } from '@/constants';
+import { MENU_TYPES } from '@/constants';
 
 function MenuButton() {
   const navigate = useNavigate();
@@ -21,7 +19,7 @@ function MenuButton() {
     setIsButtonActive(!isButtonActive);
   };
 
-  const handleNavigation = (menu: MenuType) => {
+  const handleNavigation = (menu: string) => {
     toggleMenu();
 
     if (menu in PATH) {
@@ -36,12 +34,8 @@ function MenuButton() {
     <Menu>
       <MenuList $isOpened={isMenuOpen}>
         {isMenuOpen &&
-          Object.keys(MENU_TYPES).map((key) => (
-            <RoundButton
-              key={key}
-              title={MENU_TYPES[key as MenuType]}
-              onClick={() => handleNavigation(key as MenuType)}
-            />
+          Object.keys(MENU_TYPES).map((type) => (
+            <RoundButton key={type} title={type} onClick={() => handleNavigation(type)} />
           ))}
       </MenuList>
       <RoundButton title={isButtonActive ? 'close' : 'menu'} onClick={handleToggleMenu} />

@@ -1,5 +1,5 @@
 export interface PlaceCategoryProps {
-  title: '식당' | '카페' | '술집' | '마켓';
+  title: string;
   onClick: (title: string) => void;
   initialClicked: boolean;
 }
