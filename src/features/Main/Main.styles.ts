@@ -1,6 +1,5 @@
 import styled from '@emotion/styled';
 import SmallRoundButton from '@/components/SmallRoundButton/SmallRoundButton';
-import RoundButton from '@/components/RoundButton/RoundButton';
 
 export const Wrapper = styled.main`
   width: 100%;
@@ -56,8 +55,4 @@ export const BottomBar = styled.div`
   justify-content: space-between;
   align-items: flex-end;
   z-index: 999;
-`;
-export const RelocateButton = styled(RoundButton)`
-  &.relocate-button {
-  }
 `;
