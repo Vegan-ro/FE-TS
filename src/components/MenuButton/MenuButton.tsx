@@ -34,9 +34,7 @@ function MenuButton() {
     <Menu>
       <MenuList $isOpened={isMenuOpen}>
         {isMenuOpen &&
-          Object.keys(MENU_TYPES).map((type) => (
-            <RoundButton key={type} title={type} onClick={() => handleNavigation(type)} />
-          ))}
+          MENU_TYPES.map((type) => <RoundButton key={type} title={type} onClick={() => handleNavigation(type)} />)}
       </MenuList>
       <RoundButton title={isButtonActive ? 'close' : 'menu'} onClick={handleToggleMenu} />
     </Menu>
