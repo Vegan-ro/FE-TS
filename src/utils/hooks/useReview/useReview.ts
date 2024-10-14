@@ -1,7 +1,7 @@
-import { getReviewsByPlaceId } from '@/api/reviewAPI/reviewAPI';
+import { getReviewsByPlaceId } from '@/requests/review/fetchReview';
+import { ReviewResponse } from '@/requests/review/fetchReview.types';
 import { useQuery } from '@tanstack/react-query';
 import { UseGetReviewsResult } from './useReview.types';
-import { ReviewResponse } from '@/api/reviewAPI/reviewAPI.types';
 
 export const useGetReviews = (placeId: string, pageNumber = 1, pageSize = 3): UseGetReviewsResult => {
   return useQuery<ReviewResponse, Error>({

@@ -1,5 +1,5 @@
 import { useQuery } from '@tanstack/react-query';
-import { getPlaceById } from '@/api/placeAPI/placeAPI';
+import { getPlaceById } from '@/requests/place/fetchPlace';
 import { UseGetPlaceResult } from './usePlace.types';
 import { Place } from '@/types/place.types';
 
