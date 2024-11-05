@@ -1,5 +1,4 @@
 import { useState, useEffect } from 'react';
-
 import { PlaceCategoryProps } from './PlaceCategory.types';
 import { PlaceCategoryBtn, PlaceCategoryTitle } from './PlaceCategory.styles';
 

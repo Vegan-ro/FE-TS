@@ -1,11 +1,11 @@
-import api from '@/utils/axiosInstance';
-import { ReportPlaceData } from '@/api/reportApi/reportApi.types';
+import { http } from '@/requests/http';
+import { ReportPlaceData } from '@/requests/report/fetchReport.types';
 import notify from '@/utils/hooks/useToast/notify';
 import { AxiosError } from 'axios';
 
 export const createReportPlace = async (AddPlaceData: ReportPlaceData) => {
   try {
-    const response = await api.post(`/reports`, AddPlaceData);
+    const response = await http.post(`/reports`, AddPlaceData);
     notify('success', '장소가 제보되었습니다.');
     return response.data;
   } catch (error: unknown) {
